@@ -285,7 +285,7 @@
         
         <p><em>Note: For highly sensitive leaks, whistleblower materials, or anonymous tips regarding corporate governance, you may use a pseudonym in the Name field. However, please ensure your contact email is functional if you require a follow-up response from our editorial team.</em></p>
 
-        <form class="contact-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Form submitted successfully! We will respond as soon as possible if a response is required.');">
+        <form class="contact-form" action="#" method="POST" onsubmit="event.target.reset(); event.preventDefault(); alert('Form submitted successfully! We will respond as soon as possible if a response is required.');">
             <div class="form-group">
                 <label for="name">Name / Pseudonym</label>
                 <input type="text" id="name" name="name" required placeholder="Jane Doe">
