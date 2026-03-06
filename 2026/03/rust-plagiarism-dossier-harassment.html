@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rust Ecosystem Shaken by Severe Harassment Campaign Over Alleged Plagiarism | Open Source News</title>
+
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="OpenSourceNews" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Navigation Bar */
+        nav {
+            background-color: #111;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .nav-logo-link {
+            text-decoration: none !important;
+            color:inherit;
+        }
+        .nav-logo {
+            font-weight: bold;
+            letter-spacing: 1px;
+            font-size: 1.2em;
+            border: 2px solid white;
+            padding: 3px;
+        }
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .nav-links li {
+            position: relative;
+        }
+        .nav-links a {
+            display: block;
+            color: #ccc;
+            text-decoration: none;
+            padding: 15px 20px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .nav-links a:hover {
+            color: #fff;
+            background-color: #222;
+        }
+        
+        /* Dropdown Menus */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #111;
+            min-width: 200px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+        .dropdown-menu li {
+            width: 100%;
+        }
+        .dropdown-menu a {
+            padding: 12px 20px;
+            text-transform: none; 
+            font-size: 0.95em;
+            border-bottom: 1px solid #222;
+        }
+        
+        /* Sub-menus */
+        .submenu {
+            top: 0;
+            left: 100%;
+        }
+        
+        /* Arrow indicators */
+        .has-drop::after { content: ' ▾'; font-size: 0.8em; }
+        .has-side::after { content: ' ▸'; float: right; }
+        
+        /* Hover triggers */
+        li.dropdown:hover > .dropdown-menu,
+        li.dropdown-submenu:hover > .submenu {
+            display: block;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .logo {
+            font-size: 36px;
+            font-weight: 700;
+            color: #111;
+            letter-spacing: -1px;
+        }
+        .date-bar {
+            font-size: 0.85em;
+            color: #777;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+        
+        /* Main Layout */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            background: #ffffff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.02);
+        }
+
+        /* Article Specific Styling */
+        .article-content {
+            padding: 20px 0;
+            font-family: "Georgia", serif;
+            font-size: 1.1em;
+        }
+        .article-content h1 {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 2.2em;
+            margin-top: 0;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: #000;
+        }
+        .byline {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #555;
+            font-size: 0.9em;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        .author {
+            font-weight: 600;
+            color: #222;
+        }
+        .article-content p {
+            margin-bottom: 25px;
+        }
+        .quote-block {
+            border-left: 4px solid #2c3e50;
+            padding-left: 20px;
+            margin: 35px 0;
+            font-style: italic;
+            color: #444;
+            background: #fdfdfd;
+            padding: 15px 20px;
+        }
+        .quote-block p {
+            margin: 0;
+            font-size: 1.15em;
+        }
+        
+        /* Sidebar */
+        .sidebar-title {
+            font-size: 1.2em;
+            border-bottom: 2px solid #111;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            margin-top: 20px;
+        }
+        .side-article {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        .side-article h3 {
+            font-size: 1.1em;
+            margin: 0 0 10px 0;
+            line-height: 1.3;
+        }
+        .side-article a {
+            color: #222;
+            text-decoration: none;
+        }
+        .side-article a:hover {
+            color: #d32f2f;
+        }
+        
+        /* Footer */
+        footer {
+            background: #111;
+            color: #888;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.85em;
+            margin-top: 60px;
+        }
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const today = new Date();
+
+            const options = { 
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+
+            const formattedDate = today.toLocaleDateString('en-US', options) + " | The Independent Voice of Development";
+
+            document.getElementById('current-date').textContent = formattedDate;
+        });
+    </script>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <a href="/" class="nav-logo-link"><div class="nav-logo">OSN</div></a>
+        <ul class="nav-links">
+            <li class="dropdown">
+                <a href="#" class="has-drop">Articles</a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-submenu">
+                        <a href="#" class="has-side">By Date</a>
+                        <ul class="dropdown-menu submenu">
+                            <li class="dropdown-submenu">
+                                <a href="#" class="has-side">2026</a>
+                                <ul class="dropdown-menu submenu">
+                                    <li><a href="/search/dates/2026/01/articles.html">January</a></li>
+                                    <li><a href="/search/dates/2026/02/articles.html">February</a></li>
+                                    <li><a href="/search/dates/2026/03/articles.html">March</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a href="#" class="has-side">2025</a>
+                                <ul class="dropdown-menu submenu">
+                                    <li><a href="/search/dates/2025/11/articles.html">November</a></li>
+                                    <li><a href="/search/dates/2025/12/articles.html">December</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a href="#" class="has-side">By Category</a>
+                        <ul class="dropdown-menu submenu">
+                            <li><a href="/search/categories/governance/articles.html">Governance</a></li>
+                            <li><a href="/search/categories/cybersecurity/articles.html">Cybersecurity</a></li>
+                            <li><a href="/search/categories/releases/articles.html">Releases</a></li>
+                            <li><a href="/search/categories/developer_tools/articles.html">Developer Tools</a></li>
+                            <li><a href="/search/categories/web_browsers/articles.html">Web Browsers</a></li>
+                            <li><a href="/search/categories/data/articles.html">Data</a></li>
+                            <li><a href="/search/categories/hardware/articles.html">Hardware</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="/about-us.html">About Us</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header>
+    <div class="logo">Open Source News</div>
+    <div class="date-bar" id="current-date"></div>
+</header>
+
+<div class="container">
+    <main class="article-content">
+        <h1>Rust Ecosystem Shaken by Severe Harassment Campaign Over Alleged Plagiarism</h1>
+        
+        <div class="byline">
+            By <span class="author">David Aris</span> | Governance | March 4, 2026
+        </div>
+
+        <p>A disturbing dispute within the Rust programming community has escalated into an unprecedented offline harassment campaign, leaving several prominent maintainers questioning their safety and the boundaries of open-source collaboration.</p>
+
+        <p>The conflict centers around Howard Hanlen, an independent systems developer who claims that ten high-profile Rust contributors willfully plagiarized his proprietary crate architectures. According to Hanlen, these developers stripped his authorship and integrated his core logic into several heavily trafficked foundational libraries. The accused developers have categorically denied the allegations, stating that any structural similarities are the result of standard, idiomatic Rust design patterns and denying that any code was directly copied.</p>
+
+        <p>Because open-source plagiarism can be notoriously difficult to prove definitively, the technical community remains divided on the validity of Hanlen's initial claims. However, the situation took a dark turn late last month when Hanlen bypassed digital channels and initiated a highly coordinated real-world intimidation tactic.</p>
+
+        <p>Over the past week, the ten accused developers received heavy, certified mail packages at their private residences. Inside were 500-page, professionally bound dossiers containing an unsettling aggregation of their public and semi-public data.</p>
+
+        <p>The documents included satellite imagery of their homes, property tax records, vehicle registration details, and the full names of immediate family members. Bound to the front of each dossier was a formal, multi-million dollar "invoice" for intellectual property theft, accompanied by a note indicating that Hanlen was actively monitoring their physical assets to ensure payment.</p>
+
+        <div class="quote-block">
+            <p>"It wasn't just a legal threat; it was a clear demonstration that he knew exactly where we slept, who we lived with, and what our daily routines looked like," said one of the targeted developers, who spoke to Open Source News on the condition of anonymity. "You expect toxic arguments on GitHub or Reddit. You don't expect a heavy binder full of your family's personal data to show up on your doorstep to send a message."</p>
+        </div>
+
+        <p>The meticulous nature of the dossiers has deeply unsettled the wider development community. While utilizing public records is generally not illegal, the targeted compilation and physical delivery of the data was clearly designed to intimidate the developers into stepping away from their respective projects.</p>
+
+        <p>The Rust moderation team has permanently severed Hanlen's access to the community's digital infrastructure, citing severe violations of their code of conduct regarding harassment and doxxing. Several of the affected developers have confirmed they are currently consulting with legal counsel and local authorities to determine if the dossiers meet the legal threshold for stalking or criminal intimidation.</p>
+
+        <p>Hanlen has not responded to multiple requests for comment, though a static webpage registered in his name updated briefly on Tuesday, displaying only the phrase: "The invoices are pending."</p>
+
+    </main>
+
+    <aside>
+        <div class="sidebar-title">Trending Today</div>
+        
+        <div class="side-article">
+            <h3><a href="/2026/03/google-chrome-two-week-cycle.html">Google's Chrome Browser Moves to a Rapid Two-Week Release Cycle</a></h3>
+            <div class="author-link">Marcus Vance | Web Browsers</div>
+        </div>
+
+        <div class="side-article">
+            <h3><a href="/2026/03/eclipse-foundation-vsx-300m-monthly-downloads.html">Eclipse Foundation Reports Open VSX Hits 300 Million Monthly Downloads</a></h3>
+            <div class="author-link">Sarah Jenkins | Developer Tools</div>
+        </div>
+
+        <div class="side-article">
+            <h3><a href="/2026/03/cyberstrike-ai-fortigate-attacks.html">Open-Source CyberStrikeAI Deployed in AI-Driven FortiGate Attacks</a></h3>
+            <div class="author-link">Marcus Vance | Cybersecurity</div>
+        </div>
+    </aside>
+</div>
+
+<footer>
+    <div class="footer-links">
+        <a href="/about-us.html">About Us</a>
+        <a href="/ethics-policy.html">Ethics Policy</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-cookies.html">Privacy & Cookies</a>
+    </div>
+    <p style="margin-top: 20px;">&copy; 2026 Open Source News Network. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

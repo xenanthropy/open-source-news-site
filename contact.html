@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Open Source News</title>
+
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="OpenSourceNews" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Navigation Bar */
+        nav {
+            background-color: #111;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .nav-logo-link {
+            text-decoration: none !important;
+            color:inherit;
+        }
+        .nav-logo {
+            font-weight: bold;
+            letter-spacing: 1px;
+            font-size: 1.2em;
+            border: 2px solid white;
+            padding: 3px;
+        }
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .nav-links li {
+            position: relative;
+        }
+        .nav-links a {
+            display: block;
+            color: #ccc;
+            text-decoration: none;
+            padding: 15px 20px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .nav-links a:hover {
+            color: #fff;
+            background-color: #222;
+        }
+        
+        /* Dropdown Menus */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #111;
+            min-width: 200px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+        .dropdown-menu li {
+            width: 100%;
+        }
+        .dropdown-menu a {
+            padding: 12px 20px;
+            text-transform: none; 
+            font-size: 0.95em;
+            border-bottom: 1px solid #222;
+        }
+        .submenu { top: 0; left: 100%; }
+        .has-drop::after { content: ' ▾'; font-size: 0.8em; }
+        .has-side::after { content: ' ▸'; float: right; }
+        li.dropdown:hover > .dropdown-menu,
+        li.dropdown-submenu:hover > .submenu { display: block; }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .logo {
+            font-size: 36px;
+            font-weight: 700;
+            color: #111;
+            letter-spacing: -1px;
+        }
+        
+        /* Main Layout (Single Column) */
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            background: #ffffff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.02);
+        }
+
+        /* Contact Content */
+        .contact-content h1 {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 2.5em;
+            margin-top: 0;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: #111;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 15px;
+        }
+        .contact-content p {
+            font-family: "Georgia", serif;
+            font-size: 1.15em;
+            color: #444;
+            margin-bottom: 30px;
+        }
+
+        /* Form Styling */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #222;
+            font-size: 0.95em;
+        }
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 1em;
+            background-color: #fafafa;
+        }
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #111;
+            background-color: #fff;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        .submit-btn {
+            background-color: #111;
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+            margin-top: 10px;
+            align-self: flex-start;
+        }
+        .submit-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        /* Footer */
+        footer {
+            background: #111;
+            color: #888;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.85em;
+            margin-top: 60px;
+        }
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <a href="/" class="nav-logo-link"><div class="nav-logo">OSN</div></a>
+        <ul class="nav-links">
+            <li class="dropdown">
+                <a href="#" class="has-drop">Articles</a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-submenu">
+                        <a href="#" class="has-side">By Date</a>
+                        <ul class="dropdown-menu submenu">
+                            <li class="dropdown-submenu">
+                                <a href="#" class="has-side">2026</a>
+                                <ul class="dropdown-menu submenu">
+                                    <li><a href="/search/dates/2026/01/articles.html">January</a></li>
+                                    <li><a href="/search/dates/2026/02/articles.html">February</a></li>
+                                    <li><a href="/search/dates/2026/03/articles.html">March</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a href="#" class="has-side">2025</a>
+                                <ul class="dropdown-menu submenu">
+                                    <li><a href="/search/dates/2025/11/articles.html">November</a></li>
+                                    <li><a href="/search/dates/2025/12/articles.html">December</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a href="#" class="has-side">By Category</a>
+                        <ul class="dropdown-menu submenu">
+                            <li><a href="/search/categories/governance/articles.html">Governance</a></li>
+                            <li><a href="/search/categories/cybersecurity/articles.html">Cybersecurity</a></li>
+                            <li><a href="/search/categories/releases/articles.html">Releases</a></li>
+                            <li><a href="/search/categories/developer_tools/articles.html">Developer Tools</a></li>
+                            <li><a href="/search/categories/web_browsers/articles.html">Web Browsers</a></li>
+                            <li><a href="/search/categories/data/articles.html">Data</a></li>
+                            <li><a href="/search/categories/hardware/articles.html">Hardware</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="/about-us.html">About Us</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header>
+    <div class="logo">Open Source News</div>
+    <div class="date-bar" id="current-date"></div>
+</header>
+
+<div class="container">
+    <main class="contact-content">
+        <h1>Contact the Newsdesk</h1>
+        
+        <p>Whether you have a critical tip regarding an unpatched vulnerability, need to request an editorial correction, or want to reach one of our journalists directly, the OSN newsroom is here to listen. Please use the secure form below to route your inquiry to the appropriate desk.</p>
+        
+        <p><em>Note: For highly sensitive leaks, whistleblower materials, or anonymous tips regarding corporate governance, you may use a pseudonym in the Name field. However, please ensure your contact email is functional if you require a follow-up response from our editorial team.</em></p>
+
+        <form class="contact-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Form submitted successfully! We will respond as soon as possible if a response is required.');">
+            <div class="form-group">
+                <label for="name">Name / Pseudonym</label>
+                <input type="text" id="name" name="name" required placeholder="Jane Doe">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="jane.doe@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Nature of Inquiry</label>
+                <select id="subject" name="subject" required>
+                    <option value="" disabled selected>Select an option...</option>
+                    <option value="tip">Anonymous Tip / Whistleblower</option>
+                    <option value="correction">Editorial Correction Request</option>
+                    <option value="press">Press / Media Inquiry</option>
+                    <option value="copyright">Copyright / DMCA Concern</option>
+                    <option value="pii">PII / Privacy Exposure Report</option>
+                    <option value="general">General / Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required placeholder="Please provide details regarding your inquiry..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Inquiry</button>
+        </form>
+    </main>
+</div>
+
+<footer>
+    <div class="footer-links">
+        <a href="/about-us.html">About Us</a>
+        <a href="/ethics-policy.html">Ethics Policy</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-cookies.html">Privacy & Cookies</a>
+    </div>
+    <p style="margin-top: 20px;">&copy; 2026 Open Source News Network. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

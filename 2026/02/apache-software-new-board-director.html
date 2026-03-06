@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apache Software Foundation Elects New Board of Directors | Open Source News</title>
+
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="OpenSourceNews" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Navigation Bar with Pure CSS Dropdowns */
+        nav {
+            background-color: #111;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .nav-logo-link {
+            text-decoration: none !important;
+            color:inherit;
+        }
+        .nav-logo {
+            font-weight: bold;
+            letter-spacing: 1px;
+            font-size: 1.2em;
+            border: 2px solid white;
+            padding: 3px;
+        }
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .nav-links li {
+            position: relative;
+        }
+        .nav-links a {
+            display: block;
+            color: #ccc;
+            text-decoration: none;
+            padding: 15px 20px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .nav-links a:hover {
+            color: #fff;
+            background-color: #222;
+        }
+        
+        /* Dropdown Menus */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #111;
+            min-width: 200px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+        .dropdown-menu li {
+            width: 100%;
+        }
+        .dropdown-menu a {
+            padding: 12px 20px;
+            text-transform: none; 
+            font-size: 0.95em;
+            border-bottom: 1px solid #222;
+        }
+        
+        /* Sub-menus */
+        .submenu {
+            top: 0;
+            left: 100%;
+        }
+        
+        /* Arrow indicators */
+        .has-drop::after { content: ' ▾'; font-size: 0.8em; }
+        .has-side::after { content: ' ▸'; float: right; }
+        
+        /* Hover triggers */
+        li.dropdown:hover > .dropdown-menu,
+        li.dropdown-submenu:hover > .submenu {
+            display: block;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .logo {
+            font-size: 36px;
+            font-weight: 700;
+            color: #111;
+            letter-spacing: -1px;
+        }
+        .date-bar {
+            font-size: 0.85em;
+            color: #777;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+        
+        /* Main Layout */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            background: #ffffff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.02);
+        }
+
+        /* Article Specific Styling */
+        .article-content {
+            padding: 20px 0;
+            font-family: "Georgia", serif;
+            font-size: 1.1em;
+        }
+        .article-content h1 {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 2.2em;
+            margin-top: 0;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: #000;
+        }
+        .byline {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #555;
+            font-size: 0.9em;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        .author {
+            font-weight: 600;
+            color: #222;
+        }
+        .article-content p {
+            margin-bottom: 25px;
+        }
+        .quote-block {
+            border-left: 4px solid #2c3e50;
+            padding-left: 20px;
+            margin: 35px 0;
+            font-style: italic;
+            color: #444;
+            background: #fdfdfd;
+            padding: 15px 20px;
+        }
+        .quote-block p {
+            margin: 0;
+            font-size: 1.15em;
+        }
+        
+        /* Sidebar */
+        .sidebar-title {
+            font-size: 1.2em;
+            border-bottom: 2px solid #111;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            margin-top: 20px;
+        }
+        .side-article {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        .side-article h3 {
+            font-size: 1.1em;
+            margin: 0 0 10px 0;
+            line-height: 1.3;
+        }
+        .side-article a {
+            color: #222;
+            text-decoration: none;
+        }
+        .side-article a:hover {
+            color: #d32f2f;
+        }
+        
+        /* Footer */
+        footer {
+            background: #111;
+            color: #888;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.85em;
+            margin-top: 60px;
+        }
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const today = new Date();
+
+            const options = { 
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+
+            const formattedDate = today.toLocaleDateString('en-US', options) + " | The Independent Voice of Development";
+
+            document.getElementById('current-date').textContent = formattedDate;
+        });
+    </script>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <a href="/" class="nav-logo-link"><div class="nav-logo">OSN</div></a>
+        <ul class="nav-links">
+            <li class="dropdown">
+                <a href="#" class="has-drop">Articles</a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-submenu">
+                        <a href="#" class="has-side">By Date</a>
+                        <ul class="dropdown-menu submenu">
+                            <li class="dropdown-submenu">
+                                <a href="#" class="has-side">2026</a>
+                                <ul class="dropdown-menu submenu">
+                                    <li><a href="/search/dates/2026/01/articles.html">January</a></li>
+                                    <li><a href="/search/dates/2026/02/articles.html">February</a></li>
+                                    <li><a href="/search/dates/2026/03/articles.html">March</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a href="#" class="has-side">2025</a>
+                                <ul class="dropdown-menu submenu">
+                                    <li><a href="/search/dates/2025/11/articles.html">November</a></li>
+                                    <li><a href="/search/dates/2025/12/articles.html">December</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a href="#" class="has-side">By Category</a>
+                        <ul class="dropdown-menu submenu">
+                            <li><a href="/search/categories/governance/articles.html">Governance</a></li>
+                            <li><a href="/search/categories/cybersecurity/articles.html">Cybersecurity</a></li>
+                            <li><a href="/search/categories/releases/articles.html">Releases</a></li>
+                            <li><a href="/search/categories/developer_tools/articles.html">Developer Tools</a></li>
+                            <li><a href="/search/categories/web_browsers/articles.html">Web Browsers</a></li>
+                            <li><a href="/search/categories/data/articles.html">Data</a></li>
+                            <li><a href="/search/categories/hardware/articles.html">Hardware</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="/about-us.html">About Us</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header>
+    <div class="logo">Open Source News</div>
+    <div class="date-bar" id="current-date"></div>
+</header>
+
+<div class="container">
+    <main class="article-content">
+        <h1>Apache Software Foundation Elects New Board of Directors</h1>
+        
+        <div class="byline">
+            By <span class="author">David Aris</span> | Governance | February 26, 2026
+        </div>
+
+        <p>Following a highly contested voting period that saw record turnout among active members, the Apache Software Foundation (ASF) has officially finalized its 2026 Board of Directors. The newly elected nine-member board signals a definitive operational pivot for the non-profit, shifting away from aggressive project incubation and toward strict supply chain security compliance.</p>
+
+        <p>The election arrives at a critical juncture for the ASF, which currently oversees more than 300 top-level open-source projects, including internet infrastructure pillars like Tomcat, HTTP Server, and Kafka. Over the past year, international regulatory frameworks, most notably the European Union’s Cyber Resilience Act (CRA) and evolving US federal procurement guidelines, have placed immense pressure on open-source foundations to mandate comprehensive security audits and software bills of materials (SBOMs) for their hosted code.</p>
+
+        <p>Historically, the ASF has championed a highly decentralized, "community-over-code" approach, giving individual project management committees (PMCs) broad autonomy. The 2026 board composition suggests that era of loose governance may be tightening.</p>
+
+        <div class="quote-block">
+            <p>"The reality of modern open-source development is that good intentions are no longer a sufficient defense against sophisticated supply chain attacks," stated newly elected Director Dr. Martin Reyes in a post-election mailing list thread. "Our mandate for the next cycle is clear: we must equip our volunteer maintainers with standardized, automated compliance tooling without suffocating the grassroots innovation that makes Apache successful in the first place."</p>
+        </div>
+
+        <p>Among the first items on the docket for the incoming board is a proposed structural overhaul to the Apache Incubator process. Internal documents leaked prior to the election suggest that incoming projects may soon be required to pass rigorous, foundation-sponsored penetration testing before graduating to top-level status—a move that would significantly increase the ASF's operational budget requirements.</p>
+
+        <p>Corporate sponsors are reportedly watching the transition closely. The foundation relies heavily on "Platinum" tier donations from tech conglomerates, many of whom have expressed growing impatience with the pace of security remediation in legacy open-source projects.</p>
+
+        <p>The new board members will formally assume their seats during the ASF's annual strategy summit scheduled for early April, where they are expected to announce the foundation's updated funding allocation strategy for the upcoming fiscal year.</p>
+    </main>
+
+    <aside>
+        <div class="sidebar-title">Trending Today</div>
+        
+        <div class="side-article">
+            <h3><a href="/2026/03/google-chrome-two-week-cycle.html">Google's Chrome Browser Moves to a Rapid Two-Week Release Cycle</a></h3>
+            <div class="author-link">Marcus Vance | Web Browsers</div>
+        </div>
+
+        <div class="side-article">
+            <h3><a href="/2026/03/eclipse-foundation-vsx-300m-monthly-downloads.html">Eclipse Foundation Reports Open VSX Hits 300 Million Monthly Downloads</a></h3>
+            <div class="author-link">Sarah Jenkins | Developer Tools</div>
+        </div>
+
+        <div class="side-article">
+            <h3><a href="/2026/03/cyberstrike-ai-fortigate-attacks.html">Open-Source CyberStrikeAI Deployed in AI-Driven FortiGate Attacks</a></h3>
+            <div class="author-link">Marcus Vance | Cybersecurity</div>
+        </div>
+    </aside>
+</div>
+
+<footer>
+    <div class="footer-links">
+        <a href="/about-us.html">About Us</a>
+        <a href="/ethics-policy.html">Ethics Policy</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-cookies.html">Privacy & Cookies</a>
+    </div>
+    <p style="margin-top: 20px;">&copy; 2026 Open Source News Network. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

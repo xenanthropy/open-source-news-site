@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Source News | Tech, Governance, and Development</title>
+
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="OpenSourceNews" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .governance {
+            display: none;
+        }
+
+        .cybersecurity {
+            display: none;
+        }
+
+        .releases {
+            display: none;
+        }
+
+        .developer-tools {
+            display: none;
+        }
+
+        .web-browsers {
+            display: none;
+        }
+
+        .data {
+            display: none;
+        }
+
+        .hardware {
+        }
+
+        .eleven-twentyfive {
+        }
+
+        .twelve-twentyfive {
+        }
+
+        .one-twentysix {
+        }
+
+        .two-twentysix {
+        }
+
+        .three-twentysix {
+        }
+        
+        /* Navigation Bar with Pure CSS Dropdowns */
+        nav {
+            background-color: #111;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .nav-logo-link {
+            text-decoration: none !important;
+            color:inherit;
+        }
+        .nav-logo {
+            font-weight: bold;
+            letter-spacing: 1px;
+            font-size: 1.2em;
+            border: 2px solid white;
+            padding: 3px;
+        }
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .nav-links li {
+            position: relative;
+        }
+        .nav-links a {
+            display: block;
+            color: #ccc;
+            text-decoration: none;
+            padding: 15px 20px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .nav-links a:hover {
+            color: #fff;
+            background-color: #222;
+        }
+        
+        /* Dropdown Menus */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #111;
+            min-width: 200px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+        .dropdown-menu li {
+            width: 100%;
+        }
+        .dropdown-menu a {
+            padding: 12px 20px;
+            text-transform: none; /* Looks better for sub-items */
+            font-size: 0.95em;
+            border-bottom: 1px solid #222;
+        }
+        
+        /* Sub-menus (Side dropdowns) */
+        .submenu {
+            top: 0;
+            left: 100%;
+        }
+        
+        /* Arrow indicators */
+        .has-drop::after { content: ' ▾'; font-size: 0.8em; }
+        .has-side::after { content: ' ▸'; float: right; }
+        
+        /* Hover triggers */
+        li.dropdown:hover > .dropdown-menu,
+        li.dropdown-submenu:hover > .submenu {
+            display: block;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .logo {
+            font-size: 36px;
+            font-weight: 700;
+            color: #111;
+            letter-spacing: -1px;
+        }
+        .date-bar {
+            font-size: 0.85em;
+            color: #777;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+        
+        /* Main Layout */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+        
+        /* Article Cards */
+        .article-card {
+            background: #fff;
+            padding: 25px;
+            border: 1px solid #eaeaea;
+            margin-bottom: 25px;
+        }
+        .category-tag {
+            color: #d32f2f;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .hero-title {
+            font-family: "Georgia", serif;
+            font-size: 2.2em;
+            margin: 0 0 15px 0;
+            line-height: 1.2;
+        }
+        .hero-title a {
+            color: #111;
+            text-decoration: none;
+        }
+        .hero-title a:hover {
+            text-decoration: underline;
+        }
+        .snippet {
+            font-size: 1.05em;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        .author-link {
+            font-size: 0.85em;
+            color: #888;
+        }
+        .author-link a {
+            color: #d32f2f;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        /* Sidebar */
+        .sidebar-title {
+            font-size: 1.2em;
+            border-bottom: 2px solid #111;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .side-article {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .side-article h3 {
+            font-size: 1.1em;
+            margin: 0 0 10px 0;
+            line-height: 1.3;
+        }
+        .side-article a {
+            color: #222;
+            text-decoration: none;
+        }
+        .side-article a:hover {
+            color: #d32f2f;
+        }
+        
+        /* Footer */
+        footer {
+            background: #111;
+            color: #888;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.85em;
+            margin-top: 60px;
+        }
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const today = new Date();
+
+            const options = { 
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+
+            const formattedDate = today.toLocaleDateString('en-US', options) + " | The Independent Voice of Development";
+
+            document.getElementById('current-date').textContent = formattedDate;
+        });
+    </script>
+    
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <a href="/" class="nav-logo-link"><div class="nav-logo">OSN</div></a>
+        <ul class="nav-links">
+            <li class="dropdown">
+                <a href="#" class="has-drop">Articles</a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-submenu">
+                        <a href="#" class="has-side">By Date</a>
+                        <ul class="dropdown-menu submenu">
+                            <li class="dropdown-submenu">
+                                <a href="#" class="has-side">2026</a>
+                                <ul class="dropdown-menu submenu">
+                                    <li><a href="/search/dates/2026/01/articles.html">January</a></li>
+                                    <li><a href="/search/dates/2026/02/articles.html">February</a></li>
+                                    <li><a href="/search/dates/2026/03/articles.html">March</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a href="#" class="has-side">2025</a>
+                                <ul class="dropdown-menu submenu">
+                                    <li><a href="/search/dates/2025/11/articles.html">November</a></li>
+                                    <li><a href="/search/dates/2025/12/articles.html">December</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a href="#" class="has-side">By Category</a>
+                        <ul class="dropdown-menu submenu">
+                            <li><a href="/search/categories/governance/articles.html">Governance</a></li>
+                            <li><a href="/search/categories/cybersecurity/articles.html">Cybersecurity</a></li>
+                            <li><a href="/search/categories/releases/articles.html">Releases</a></li>
+                            <li><a href="/search/categories/developer_tools/articles.html">Developer Tools</a></li>
+                            <li><a href="/search/categories/web_browsers/articles.html">Web Browsers</a></li>
+                            <li><a href="/search/categories/data/articles.html">Data</a></li>
+                            <li><a href="/search/categories/hardware/articles.html">Hardware</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="/about-us.html">About Us</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header>
+    <div class="logo">Open Source News</div>
+    <div class="date-bar" id="current-date"></div>
+</header>
+
+<div class="container">
+    <main>
+        <div class="article-card governance three-twentysix">
+            <span class="category-tag">Governance</span>
+            <h2 class="hero-title" style="font-size: 1.6em;"><a href="/2026/03/rust-plagiarism-dossier-harassment.html">Rust Ecosystem Shaken by Severe Harassment Campaign Over Alleged Plagiarism</a></h2>
+            <p class="snippet">A disturbing dispute within the Rust programming community has escalated into an unprecedented offline harassment campaign, leaving several prominent maintainers questioning their safety and the boundaries of open-source collaboration.</p>
+            <div class="author-link">By <a href="/authors/david-aris.html">David Aris</a> | 4 min read | March 4, 2026</div>
+        </div>
+
+        <div class="article-card web-browsers three-twentysix">
+            <span class="category-tag">Web Browsers</span>
+            <h2 class="hero-title" style="font-size: 1.6em;"><a href="/2026/03/google-chrome-two-week-cycle.html">Google's Chrome Browser Moves to a Rapid Two-Week Release Cycle</a></h2>
+            <p class="snippet">In a major shift that will reshape the pace of web development, Google announced today that it is transitioning the Chrome browser to a rapid two-week major release cycle to shrink the window of exposure for zero-day vulnerabilities.</p>
+            <div class="author-link">By <a href="/authors/marcus-vance.html">Marcus Vance</a> | 4 min read | March 4, 2026</div>
+        </div>
+
+        <div class="article-card cybersecurity three-twentysix">
+            <span class="category-tag">Cybersecurity</span>
+            <h2 class="hero-title" style="font-size: 1.6em;"><a href="/2026/03/cyberstrike-ai-fortigate-attacks.html">Open-Source CyberStrikeAI Deployed in AI-Driven FortiGate Attacks</a></h2>
+            <p class="snippet">Cybersecurity researchers are tracking a massive spike in automated network intrusions targeting Fortinet’s FortiGate SSL VPN appliances, orchestrated by a highly sophisticated, open-source offensive AI framework.</p>
+            <div class="author-link">By <a href="/authors/marcus-vance.html">Marcus Vance</a> | 5 min read | March 4, 2026</div>
+        </div>
+
+        <div class="article-card developer-tools three-twentysix">
+            <span class="category-tag">Developer Tools</span>
+            <h2 class="hero-title" style="font-size: 1.6em;"><a href="/2026/03/eclipse-foundation-vsx-300m-monthly-downloads.html">Eclipse Foundation Reports Open VSX Hits 300 Million Monthly Downloads</a></h2>
+            <p class="snippet">The Open VSX Registry, the vendor-neutral alternative to Microsoft’s Visual Studio Code Marketplace, has reached a massive new milestone as enterprise engineering teams pivot toward telemetry-free editors.</p>
+            <div class="author-link">By <a href="/authors/sarah-jenkins.html">Sarah Jenkins</a> | 3 min read | March 3, 2026</div>
+        </div>
+
+        <div class="article-card releases three-twentysix">
+            <span class="category-tag">Releases</span>
+            <h2 class="hero-title" style="font-size: 1.6em;"><a href="/2026/03/linux-kernel-620-legacy.html">Linux Kernel 6.20 Drops Legacy Hardware Support</a></h2>
+            <p class="snippet">Linus Torvalds announced the rc1 release of kernel 6.20, which finally strips out thousands of lines of code dedicated to obsolete floppy controllers and early 90s audio drivers.</p>
+            <div class="author-link">By <a href="/authors/elena-rostova.html">Elena Rostova</a> | 3 min read | March 2, 2026</div>
+        </div>
+
+        <div class="article-card cybersecurity three-twentysix">
+            <span class="category-tag">Cybersecurity</span>
+            <h2 class="hero-title" style="font-size: 1.6em;"><a href="/2026/03/nginx-ingress-controller-exploit.html">Critical Zero-Day Patched in Popular Nginx Ingress Controller</a></h2>
+            <p class="snippet">Kubernetes administrators are urged to update immediately as a newly discovered vulnerability allows for remote code execution in default configurations of the widely used ingress controller.</p>
+            <div class="author-link">By <a href="/authors/marcus-vance.html">Marcus Vance</a> | 5 min read | March 1, 2026</div>
+        </div>
+
+        <div class="article-card releases two-twentysix">
+            <span class="category-tag">Releases</span>
+            <h2 class="hero-title" style="font-size: 1.6em;"><a href="/2026/02/vue-js-4-beta-status.html">Vue.js 4.0 Reaches Beta Status, Emphasizes Compilation Speeds</a></h2>
+            <p class="snippet">The core team has officially moved Vue 4.0 into beta, showcasing a rewritten compiler pipeline that drastically reduces build times for large enterprise applications.</p>
+            <div class="author-link">By <a href="/authors/sarah-jenkins.html">Sarah Jenkins</a> | 4 min read | February 28, 2026</div>
+        </div>
+
+        <div class="article-card governance two-twentysix">
+            <span class="category-tag">Governance</span>
+            <h2 class="hero-title" style="font-size: 1.6em;"><a href="/2026/02/apache-software-new-board-director.html">Apache Software Foundation Elects New Board of Directors</a></h2>
+            <p class="snippet">Following a highly contested voting period, the ASF has finalized its 2026 board members, signaling a potential shift towards tighter compliance standards across top-level projects.</p>
+            <div class="author-link">By <a href="/authors/david-aris.html">David Aris</a> | 6 min read | February 26, 2026</div>
+        </div>
+
+        <div class="article-card data two-twentysix">
+            <span class="category-tag">Data</span>
+            <h2 class="hero-title" style="font-size: 1.6em;"><a href="/2026/02/postgresql-18-native-vector-search.html">PostgreSQL 18 Introduces Native Vector Search Capabilities</a></h2>
+            <p class="snippet">Eliminating the need for third-party extensions, PostgreSQL's latest major release brings robust vector search natively to the database engine, catering to the ongoing surge in AI applications.</p>
+            <div class="author-link">By <a href="/authors/amir-tariq.html">Amir Tariq</a> | 3 min read | February 24, 2026</div>
+        </div>
+
+        <div class="article-card hardware two-twentysix">
+            <span class="category-tag">Hardware</span>
+            <h2 class="hero-title" style="font-size: 1.6em;"><a href="/2026/02/riscv-international-automotive-specifications.html">RISC-V International Publishes Final Automotive Specifications</a></h2>
+            <p class="snippet">The open instruction set architecture continues its aggressive expansion as the foundation finalizes safety-critical profiles aimed directly at next-generation vehicle microcontrollers.</p>
+            <div class="author-link">By <a href="/authors/elena-rostova.html">Elena Rostova</a> | 4 min read | February 22, 2026</div>
+        </div>
+
+        <div class="article-card releases one-twentysix">
+            <span class="category-tag">Releases</span>
+            <h2 class="hero-title" style="font-size: 1.6em;"><a href="/2026/01/nodejs-typescript-support.html">Node.js Merges Native TypeScript Support in Latest Alpha Release</a></h2>
+            <p class="snippet">After years of community debate, the Node.js core team has officially merged native TypeScript execution into the master branch via a highly optimized "type-stripping" mechanism.</p>
+            <div class="author-link">By <a href="/authors/sarah-jenkins.html">Sarah Jenkins</a> | 4 min read | January 14, 2026</div>
+        </div>
+
+        <div class="article-card governance twelve-twentyfive">
+            <span class="category-tag">Governance</span>
+            <h2 class="hero-title" style="font-size: 1.6em;"><a href="/2025/12/python-funding-restructure.html">Python Software Foundation Announces Tiered Funding Restructure</a></h2>
+            <p class="snippet">In a move designed to stabilize the long-term maintenance of the Python package ecosystem, the PSF announced a sweeping restructure of its corporate sponsorship model toward a consumption-based tier system.</p>
+            <div class="author-link">By <a href="/authors/david-aris.html">David Aris</a> | 5 min read | December 12, 2025</div>
+        </div>
+
+        <div class="article-card developer-tools eleven-twentyfive">
+            <span class="category-tag">Developer Tools</span>
+            <h2 class="hero-title" style="font-size: 1.6em;"><a href="/2025/11/react-20-developer-fatigue.html">React 20 Proposed API Changes Met With "Developer Fatigue"</a></h2>
+            <p class="snippet">The Meta Open Source team published the first RFC for React 20, outlining a dramatic shift to "Reactive Primitives" that has left many developers frustrated by continuous architectural rewrites.</p>
+            <div class="author-link">By <a href="/authors/sarah-jenkins.html">Sarah Jenkins</a> | 4 min read | November 18, 2025</div>
+        </div>
+    </main>
+
+    <aside>
+        <div class="sidebar-title">Trending Today</div>
+        
+        <div class="side-article">
+            <h3><a href="/2026/03/google-chrome-two-week-cycle.html">Google's Chrome Browser Moves to a Rapid Two-Week Release Cycle</a></h3>
+            <div class="author-link">Web Browsers</div>
+        </div>
+
+        <div class="side-article">
+            <h3><a href="/2026/03/eclipse-foundation-vsx-300m-monthly-downloads.html">Eclipse Foundation Reports Open VSX Hits 300 Million Monthly Downloads</a></h3>
+            <div class="author-link">Developer Tools</div>
+        </div>
+
+        <div class="side-article">
+            <h3><a href="/2026/03/cyberstrike-ai-fortigate-attacks.html">Open-Source CyberStrikeAI Deployed in AI-Driven FortiGate Attacks</a></h3>
+            <div class="author-link">Cybersecurity</div>
+        </div>
+    </aside>
+</div>
+
+<footer>
+    <div class="footer-links">
+        <a href="/about-us.html">About Us</a>
+        <a href="/ethics-policy.html">Ethics Policy</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy-cookies.html">Privacy & Cookies</a>
+    </div>
+    <p style="margin-top: 20px;">&copy; 2026 Open Source News Network. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
